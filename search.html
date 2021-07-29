@@ -1,0 +1,115 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Custom Search</title>
+
+</head>
+
+<body>
+<div id="app">
+    <div class="navbar">
+        <span class="link" v-if="!show_guide" @click="show_guide = !show_guide">Guide</span>
+    </div>
+    <form @submit.prevent>
+        <div class="search-bar">
+            <input type="text" v-model.trim="searchterm" placeholder="Search Text">
+            <button @click="openLink">Search</button>
+        </div>
+        <div class="advanced-actions">
+            <div v-for="filter, index in filter_list" :key="index" class="filter-field">
+                <select name="" id="" ref="option" v-model="filter_list[index].filter">
+                    <option selected disabled value="">Choose a Filter</option>
+                    <optgroup label="Text Filter">
+                        <option value="exact">Exact Match</option>
+                        <option value="-">Exclude Word</option>
+                    </optgroup>
+                    <optgroup label="Website Filter">
+                        <option value="site:">Add Site</option>
+                        <option value="-site:">Exclude Site</option>
+                    </optgroup>
+                    <optgroup label="Other Filters">
+                        <option value="filetype:">File Type</option>
+                    </optgroup>
+                </select>
+                <input type="text" v-model.trim.lazy="filter_list[index].value">
+                <button @click="deleteFilter(index)">Delete Filter</button>
+            </div>
+        </div>
+        <button @click="addFilter">Add Filter</button>
+    </form>
+    <transition name="bounce">
+        <div class="modal" v-if="show_guide">
+            <div class="navbar">
+                <span class="link" v-if="show_guide" @click="show_guide = !show_guide">Close</span>
+            </div>
+            <div class="guide-text">
+                <p>Enter the main search term in main search bar at the top.</p>
+                <h3>Filters</h3>
+                <ul>
+                    <li><strong>Exact Match</strong>: <i>Enter a String. The string will be searched for exact match</i>
+                    </li>
+                    <li><strong>Exclude Word</strong>: <i>Enter a word. The search result with the word will be excluded
+                        from results.</i></li>
+                    <li><strong>Add Site</strong>: <i>Enter a website(ex: google.com). Only the results from added sites
+                        will be shown.</i></li>
+                    <li><strong>Exclude Site</strong>: <i>Enter a website(ex: google.com). The results from the given site
+                        will not be shown</i></li>
+                    <li><strong>File Type</strong>: <i>Enter a Filetype(ex: pdf, mp4). The results whihc match the mentioned
+                        filetype will be shown</i></li>
+                </ul>
+            </div>
+        </div>
+    </transition>
+</div>
+</body>
+
+<script>
+    var app;
+    app = Vue.createApp({
+        data() {
+            return {
+                searchterm: '',
+                filter_list: [{filter: '', value: ''}],
+                show_guide: false,
+            }
+        },
+        methods: {
+            addFilter() {
+                this.filter_list.push({filter: '', value: ''})
+            },
+
+            deleteFilter(index) {
+                this.filter_list.splice(index, 1)
+            },
+
+            getSearchString() {
+                var a = "https://google.com/search?q="+this.searchterm.split(' ').join('+');
+                for (var x of this.filter_list) {
+                    var val = x.value.split(' ').join('+');
+                    var filter = x.filter;
+                    if (val === '' || filter === '') {
+
+                    } else if (filter === 'exact'){
+                        a = a+"+\""+val+"\"";
+                    } else {
+                        a = a+'+'+filter+val;
+                    }
+                }
+                return a
+            },
+
+            openLink() {
+                window.open(this.getSearchString())
+            },
+        },
+    });
+
+    const vm = app.mount("#app")
+</script>
+
+</html>

@@ -1,0 +1,253 @@
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin: 0;
+  padding: 0;
+}
+
+#app .navbar {
+  width: 100%;
+  height: 20px;
+  text-align: right;
+  text-decoration: underline;
+}
+
+#app .navbar .link:hover {
+  cursor: pointer;
+}
+
+#app .modal {
+  position: fixed;
+  background-color: coral;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  text-align: left;
+  padding: 10px  0 0;
+}
+
+#app .modal .navbar {
+  width: 100%;
+  height: 20px;
+  text-align: right;
+  text-decoration: underline;
+  padding-right: 10px;
+}
+
+#app .modal .navbar .link {
+  color: white;
+  margin-top: 10px;
+}
+
+#app .modal .navbar .link:hover {
+  cursor: pointer;
+}
+
+#app .modal .guide-text {
+  padding: 60px;
+}
+
+#app .modal .guide-text ul {
+  margin: auto;
+}
+
+#app button:hover {
+  cursor: pointer;
+}
+
+#app form .search-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: wrap column;
+          flex-flow: wrap column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 90px 0 30px 0;
+}
+
+@media only screen and (max-width: 600px) {
+  #app form .search-bar {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+#app form .search-bar input {
+  width: 600px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 7px 10px;
+  margin: 5px;
+  -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 1px;
+}
+
+#app form .search-bar input::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+#app form .search-bar input:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+#app form .search-bar input::-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+#app form .search-bar input::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+@media only screen and (max-width: 600px) {
+  #app form .search-bar input {
+    width: 300px;
+  }
+}
+
+#app form .search-bar button {
+  margin: 5px;
+  width: 100px;
+  color: coral;
+  border: 2px solid coral;
+  padding: 5px;
+  font-weight: bold;
+  -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+#app form .search-bar button:hover {
+  background-color: coral;
+  color: white;
+  cursor: pointer;
+}
+
+#app form .search-bar button:active {
+  outline: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#app form .advanced-actions {
+  padding: 30px;
+}
+
+#app form .advanced-actions .filter-field {
+  margin: 10px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: wrap row;
+          flex-flow: wrap row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  width: 80%;
+}
+
+#app form .advanced-actions .filter-field select {
+  padding: 5px;
+  margin: 5px;
+  -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media only screen and (max-width: 800px) {
+  #app form .advanced-actions .filter-field select {
+    width: 100%;
+  }
+}
+
+#app form .advanced-actions .filter-field select option {
+  background-color: #E9E9ED;
+  border: none;
+}
+
+#app form .advanced-actions .filter-field input {
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  width: 300px;
+  -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media only screen and (max-width: 800px) {
+  #app form .advanced-actions .filter-field input {
+    width: 100%;
+  }
+}
+
+#app form .advanced-actions .filter-field button {
+  padding: 5px;
+  margin: 5px;
+  -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media only screen and (max-width: 800px) {
+  #app form .advanced-actions .filter-field button {
+    width: 100%;
+  }
+}
+
+.bounce-enter-active {
+  -webkit-animation: bounce-in .5s;
+          animation: bounce-in .5s;
+}
+
+.bounce-leave-active {
+  animation: bounce-in .5s reverse;
+}
+
+@-webkit-keyframes bounce-in {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+/*# sourceMappingURL=styles.css.map */
